@@ -10,7 +10,7 @@ interface TransactionDao {
     suspend fun insertTransaction(transaction: Transaction): Long
 
     @Update
-    suspend fun updateTransaction(transaction: Transaction): Long
+    suspend fun updateTransaction(transaction: Transaction): Int
 
     @Delete
     suspend fun deleteTransaction(transaction: Transaction)

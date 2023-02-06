@@ -11,7 +11,7 @@ interface TransactionCategoryDao {
     suspend fun insertCategory(category: TransactionCategory): Long
 
     @Update
-    suspend fun updateCategory(category: TransactionCategory): Long
+    suspend fun updateCategory(category: TransactionCategory): Int
 
     @Delete
     suspend fun deleteCategory(category: TransactionCategory)
