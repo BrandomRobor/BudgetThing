@@ -28,6 +28,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -39,25 +40,30 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/category_type_title"
                 android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/category_form_name_field" />
+                app:layout_constraintTop_toBottomOf="@id/category_form_name_field"
+                tools:viewBindingIgnore="true" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/category_form_button_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                app:checkedButton="@id/category_form_expense_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/category_form_type_text"
-                app:selectionRequired="true">
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/category_form_expense_button"
                     style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/expense_category_type" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/category_form_income_button"
                     style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -77,6 +83,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
