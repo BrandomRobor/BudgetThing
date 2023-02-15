@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import me.brandon.budgetthing.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +22,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appToolbar)
         val navController =
             (supportFragmentManager.findFragmentById(binding.appFragmentContainer.id) as NavHostFragment).navController
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(navController.graph, binding.appDrawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.appNavView.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
