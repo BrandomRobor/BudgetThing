@@ -5,4 +5,11 @@
 
     <string name="nav_drawer_homepage_title">Homepage</string>
     <string name="nav_drawer_category_title">Categories</string>
+
+    <string name="fragment_category_form_fab_description">Save category</string>
+    <string name="fragment_category_form_name_hint">Name</string>
+    <string name="income_category_type">Income</string>
+    <string name="expense_category_type">Expense</string>
+    <string name="category_type_title">Type</string>
+    <string name="optional_description_hint">Description (optional)</string>
 </resources>
