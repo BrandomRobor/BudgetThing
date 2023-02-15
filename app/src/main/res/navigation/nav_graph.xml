@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homepageFragment">
+    app:startDestination="@id/nav_drawer_homepage_entry">
 
     <fragment
-        android:id="@+id/homepageFragment"
+        android:id="@id/nav_drawer_homepage_entry"
         android:name="me.brandon.budgetthing.ui.homepage.HomepageFragment"
-        android:label="fragment_homepage"
+        android:label="@string/nav_drawer_homepage_title"
         tools:layout="@layout/fragment_homepage" />
+    <fragment
+        android:id="@id/nav_drawer_category_entry"
+        android:name="me.brandon.budgetthing.ui.categorypage.CategoryPageFragment"
+        android:label="@string/nav_drawer_category_title"
+        tools:layout="@layout/fragment_category_page" />
 </navigation>

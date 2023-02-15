@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appToolbar)
         val navController =
             (supportFragmentManager.findFragmentById(binding.appFragmentContainer.id) as NavHostFragment).navController
-        appBarConfiguration = AppBarConfiguration(navController.graph, binding.appDrawerLayout)
-        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.appNavView.setupWithNavController(navController)
+        appBarConfiguration = AppBarConfiguration(binding.appNavView.menu, binding.appDrawerLayout)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {
