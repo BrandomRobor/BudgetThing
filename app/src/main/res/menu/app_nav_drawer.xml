@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_drawer_homepage_entry"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/nav_drawer_homepage_title" />
+
+    <item
+        android:id="@+id/nav_drawer_category_entry"
+        android:icon="@drawable/baseline_category_24"
+        android:title="@string/nav_drawer_category_title" />
+</menu>
