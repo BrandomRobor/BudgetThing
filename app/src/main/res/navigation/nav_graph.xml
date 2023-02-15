@@ -14,5 +14,14 @@
         android:id="@id/nav_drawer_category_entry"
         android:name="me.brandon.budgetthing.ui.categorypage.CategoryPageFragment"
         android:label="@string/nav_drawer_category_title"
-        tools:layout="@layout/fragment_category_page" />
+        tools:layout="@layout/fragment_category_page">
+        <action
+            android:id="@+id/action_nav_drawer_category_entry_to_categoryFormFragment"
+            app:destination="@id/categoryFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFormFragment"
+        android:name="me.brandon.budgetthing.ui.categoryform.CategoryFormFragment"
+        android:label="@string/fab_add_category_description"
+        tools:layout="@layout/fragment_category_form" />
 </navigation>

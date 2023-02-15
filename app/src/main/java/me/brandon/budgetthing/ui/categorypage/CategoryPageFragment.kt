@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import me.brandon.budgetthing.databinding.FragmentCategoryPageBinding
 
 class CategoryPageFragment : Fragment() {
@@ -18,6 +19,17 @@ class CategoryPageFragment : Fragment() {
     ): View {
         _binding = FragmentCategoryPageBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            categoryPageAddFab.setOnClickListener {
+                val action =
+                    CategoryPageFragmentDirections.actionNavDrawerCategoryEntryToCategoryFormFragment()
+                it.findNavController().navigate(action)
+            }
+        }
     }
 
     override fun onDestroyView() {
