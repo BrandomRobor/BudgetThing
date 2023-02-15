@@ -5,10 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import me.brandon.budgetthing.R
 import me.brandon.budgetthing.databinding.FragmentCategoryFormBinding
 import me.brandon.budgetthing.util.CategoryType
+import me.brandon.budgetthing.util.ValidationStatus
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CategoryFormFragment : Fragment() {
@@ -29,6 +37,9 @@ class CategoryFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             categoryFormNameField.requestFocus()
+            categoryFormNameField.editText!!.addTextChangedListener {
+                categoryFormNameField.error = null
+            }
 
             catgoryFormDoneFab.setOnClickListener {
                 onFormSubmit()
@@ -39,6 +50,23 @@ class CategoryFormFragment : Fragment() {
                     return@setOnEditorActionListener true
                 }
                 return@setOnEditorActionListener false
+            }
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                    viewModel.validationState.collectLatest {
+                        when (it) {
+                            ValidationStatus.CLEAR -> {}
+                            ValidationStatus.PASS -> findNavController().navigateUp()
+                            ValidationStatus.ERROR -> {
+                                if (categoryFormNameField.editText!!.text.toString().isBlank()) {
+                                    categoryFormNameField.error =
+                                        getString(R.string.required_field_hint)
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -56,7 +84,6 @@ class CategoryFormFragment : Fragment() {
                 selectedType,
                 categoryFormDescriptionField.editText!!.text.toString()
             )
-            findNavController().navigateUp()
         }
     }
 

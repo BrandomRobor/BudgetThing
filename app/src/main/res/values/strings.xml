@@ -12,4 +12,5 @@
     <string name="expense_category_type">Expense</string>
     <string name="category_type_title">Type</string>
     <string name="optional_description_hint">Description (optional)</string>
+    <string name="required_field_hint">Field is required</string>
 </resources>
