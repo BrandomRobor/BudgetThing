@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Budget Thing</string>
     <string name="fab_add_transaction_description">Add transaction</string>
+    <string name="fab_add_category_description">Add category</string>
 </resources>
