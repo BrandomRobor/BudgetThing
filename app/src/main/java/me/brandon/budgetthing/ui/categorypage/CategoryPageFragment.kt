@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.google.android.material.tabs.TabLayoutMediator
+import me.brandon.budgetthing.R
 import me.brandon.budgetthing.databinding.FragmentCategoryPageBinding
 
 class CategoryPageFragment : Fragment() {
@@ -13,9 +15,7 @@ class CategoryPageFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCategoryPageBinding.inflate(inflater, container, false)
         return binding.root
@@ -23,7 +23,17 @@ class CategoryPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.apply {
+            val tabsArray = resources.getStringArray(R.array.category_tabs_names)
+            val adapter = CategoryPagerAdapter(
+                this@CategoryPageFragment, categoryPageTabLayout.tabCount
+            )
+            categoryPagePager.adapter = adapter
+            TabLayoutMediator(categoryPageTabLayout, categoryPagePager) { tab, position ->
+                tab.text = tabsArray[position]
+            }.attach()
+
             categoryPageAddFab.setOnClickListener {
                 val action =
                     CategoryPageFragmentDirections.actionNavDrawerCategoryEntryToCategoryFormFragment()

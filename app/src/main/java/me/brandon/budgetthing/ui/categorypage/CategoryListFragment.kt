@@ -11,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.brandon.budgetthing.databinding.FragmentCategoryListBinding
+import me.brandon.budgetthing.util.getSerializableCompat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CategoryListFragment : Fragment() {
@@ -19,9 +20,7 @@ class CategoryListFragment : Fragment() {
     private val viewModel: CategoryPageViewModel by viewModel()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCategoryListBinding.inflate(inflater, container, false)
         return binding.root
@@ -30,6 +29,11 @@ class CategoryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = CategoryListAdapter()
+        viewModel.setCategoryTypeOfTab(
+            requireArguments().getSerializableCompat(
+                CategoryPagerAdapter.CATEGORY_TYPE_KEY
+            )!!
+        )
 
         binding.apply {
             categoryListRecyclerView.adapter = adapter

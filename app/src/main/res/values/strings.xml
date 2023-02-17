@@ -13,4 +13,9 @@
     <string name="category_type_title">Type</string>
     <string name="optional_description_hint">Description (optional)</string>
     <string name="required_field_hint">Field is required</string>
+
+    <string-array name="category_tabs_names">
+        <item>Expense</item>
+        <item>Income</item>
+    </string-array>
 </resources>
